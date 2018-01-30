@@ -110,7 +110,7 @@ public class Appt implements  Comparable<Appt>{
      * @sets valid to true if the appointment is valid
      */
     private void isValid() {
-    	int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
+    	int NumDaysInMonth= 31;//CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
     				
     	if(startHour<0 || startHour>23)
     		this.valid=false;
@@ -297,7 +297,7 @@ public class Appt implements  Comparable<Appt>{
 		    return null;
 		}
          String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
-        return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
+        return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription() /*+ "\n"*/;
     }
 
  //   The compareTo() method is hard to explain, in integer sorting, just remember
