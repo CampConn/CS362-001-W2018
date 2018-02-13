@@ -75,7 +75,7 @@ public class ApptTest {
 
 	//This test failed in the not mutated code, which prevented pitest from running
 	/*@Test
-	public void test05()  throws Throwable {
+	public void test05m()  throws Throwable {
 		Appt appt = new Appt(13, 35, 7, 1, 2018, "Birthday Party", "This is my birthday party.");
 
 		appt.setStartMonth(13);
