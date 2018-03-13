@@ -1,0 +1,7 @@
+Bug 1: month coding
+Several of my tests threw out of bounds errors when the number 12 was used for the month. The months are supposed to be encoded from 1 to 12, so this shouldn't be happening. Upon further inspection, it was found that on line 113 of Appt.java, the first line of isValid(), the start year and start month are passed into NumDaysInMonth() with no changes, and said function (lines 28 to 37 of CalendarUtil.java) directly uses the given number to check an array, therefore encoding the months from 0 to 11. Either isValid() or NumDaysInMonth() need to subtract 1 from the month number to get the correct result. This same bug caused another failure: February 29, 2018 was accepted because it treated February like it was March (Feb should be 2, but that returned the 3rd entry from the array) instead of checking for a leap year.
+
+Bug 2: 24hr to 12hr time issue
+For test02 of my Appt unit test, it was expected that the toString() function (lines 294 to 301 of Appt.java) to represent the time of 13:35 as 1:35pm in 12hr time, as it should. However, it instead represented it as 1:35am. Upon inspection, line 280 of Appt.java, the first line of the represntationApp() function (which is mispelled, by the way) reads:
+String half = (getStartHour() > 11) ? "am" : "pm";
+the hours 0 to 11 should be am, while 12 to 23 are pm, but this line seems to do the opposite.
